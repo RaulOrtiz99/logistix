@@ -9,7 +9,6 @@ class GpsAccesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(), 
       body: BlocBuilder<GpsBloc, GpsState>(
         builder: (context, state) {
           return !state.isGpsEnabled

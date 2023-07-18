@@ -5,11 +5,12 @@ part 'gps_event.dart';
 part 'gps_state.dart';
 
 class GpsBloc extends Bloc<GpsEvent, GpsState> {
-  GpsBloc() : super(GpsState(isGpsEnabled:false, isGpsPermissionGranted:false)) {
-    on<GpsEvent>((event, emit) {
-      // TODO: implement event handler 
+  GpsBloc()
+      : super(const GpsState(isGpsEnabled: false, isGpsPermissionGranted: false)) {
+    on<GpsAndPermissionEvent>((event, emit)=>emit(state.copyWith(
+      isGpsEnabled: event.isGpsEnabled,
+      isGpsPermissionGranted: event.isPermissionGranted
 
-      
-    });
+    )));
   }
 }
