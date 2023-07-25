@@ -38,7 +38,7 @@ class _AccesButton extends StatelessWidget {
           onPressed: () {},
           elevation: 2,
           splashColor: Colors.transparent,
-          child: Text(
+          child: const Text(
             'Solicitar acceso',
             style: TextStyle(
               color: Colors.white,
