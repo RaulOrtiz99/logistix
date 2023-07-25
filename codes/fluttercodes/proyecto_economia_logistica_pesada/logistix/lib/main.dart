@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logistix/blocs/gps/gps_bloc.dart';
+import 'package:logistix/screens/loading_screen.dart';
 import 'package:logistix/screens/gps_acces_screen.dart';
 
 void main() {
@@ -23,6 +24,6 @@ class Logistix extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Material App',
-        home: GpsAccesScreen());
+        home: LoadingScreen());
   }
 }
