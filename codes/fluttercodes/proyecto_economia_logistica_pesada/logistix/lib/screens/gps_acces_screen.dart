@@ -27,30 +27,33 @@ class _AccesButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Center(
-          child: Text('Es necesario el acceso a GPS'),
-        ),
-        MaterialButton(
-          color: Colors.black,
-          onPressed: () {
-            //asi accedemos a la logica del blocGpd
-            final gpsBloc = BlocProvider.of<GpsBloc>(context);
-            gpsBloc.askGpsAcces();
-          },
-          elevation: 2,
-          splashColor: Colors.transparent,
-          child: Text(
-            'Solicitar acceso',
-            style: TextStyle(
-              color: Colors.white,
-            ),
+    return Container(
+      color: Colors.pink,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Center(
+            child: Text('Es necesario el acceso a GPS'),
           ),
-          shape: const StadiumBorder(),
-        )
-      ],
+          MaterialButton(
+            color: Colors.black,
+            onPressed: () {
+              //asi accedemos a la logica del blocGpd
+              final gpsBloc = BlocProvider.of<GpsBloc>(context);
+              gpsBloc.askGpsAcces();
+            },
+            elevation: 2,
+            splashColor: Colors.transparent,
+            child: Text(
+              'Solicitar acceso',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            shape: const StadiumBorder(),
+          )
+        ],
+      ),
     );
   }
 }

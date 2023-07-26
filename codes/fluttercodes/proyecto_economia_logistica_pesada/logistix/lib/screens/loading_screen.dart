@@ -16,14 +16,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: BlocBuilder<GpsBloc,GpsState>(
-          builder: (context,state) {
-            return state.isAllGranted
-            ?const MapScreen()
-            : const GpsAccesScreen();
-          },
-        )
+      body: BlocBuilder<GpsBloc,GpsState>(
+        builder: (context,state) {
+          return state.isAllGranted
+          ?const MapScreen()
+          : const GpsAccesScreen();
+        },
       ),
     );
   }

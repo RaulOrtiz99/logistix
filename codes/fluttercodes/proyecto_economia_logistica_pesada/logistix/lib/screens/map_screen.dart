@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logistix/blocs/location/location_bloc.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -8,8 +10,31 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+
+  late LocationBloc locationBloc;
+
+  @override
+  void initState() {
+    
+    super.initState();
+
+    locationBloc= BlocProvider.of<LocationBloc>(context);
+    locationBloc.startFollowingUser();
+  }
+
+  @override
+  void dispose() {
+    locationBloc.stopFollowingUser();
+    super.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: Text('Map'),
+      ),
+    );
   }
 }
