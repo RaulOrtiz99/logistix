@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:logistix/blocs/blocs.dart';
 import 'package:logistix/theme/themes.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -8,10 +9,17 @@ part 'map_event.dart';
 part 'map_state.dart';
 
 class MapBloc extends Bloc<MapEvent, MapState> {
+  final LocationBloc locationBloc;
+
   GoogleMapController? _mapController;
 
-  MapBloc() : super(MapState()) {
+  MapBloc({required this.locationBloc}) : super(MapState()) {
     on<OnMapInitializedEvent>(_onInitMap);
+    locationBloc.stream.listen((locationState) {
+      if(!state.followUser)return; 
+      if(locationState.lastKnownLocation==null)return; 
+      moveCamera(locationState.lastKnownLocation!);
+    });
   }
 
   void _onInitMap(OnMapInitializedEvent event, Emitter<MapState> emit) {
@@ -20,7 +28,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     emit(state.copyWith(isMapInitialized: true));
   }
 
-  void moveCamera(LatLng newLocation){
+  void moveCamera(LatLng newLocation) {
     final cameraUpdate = CameraUpdate.newLatLng(newLocation);
     _mapController?.animateCamera(cameraUpdate);
   }
