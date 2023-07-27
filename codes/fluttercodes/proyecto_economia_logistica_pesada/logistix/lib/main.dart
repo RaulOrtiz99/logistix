@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logistix/blocs/gps/gps_bloc.dart';
+import 'package:logistix/blocs/map/map_bloc.dart';
 import 'package:logistix/screens/loading_screen.dart';
 import 'package:logistix/blocs/location/location_bloc.dart';
 
@@ -11,6 +12,7 @@ void main() {
       providers: [
         BlocProvider(create: (context) => GpsBloc()),
         BlocProvider(create: (context) => LocationBloc()),
+        BlocProvider(create:(context)=> MapBloc())
       ],
       child: Logistix(),
     ),

@@ -18,6 +18,12 @@ class MapViews extends StatelessWidget {
       height: size.height,
       child: GoogleMap(
         initialCameraPosition: initialCameraPosition,
+        myLocationEnabled: true,
+        zoomControlsEnabled: false,
+        myLocationButtonEnabled: false,
+        //todo: MARKERS 
+        //TODO: POLYLINES 
+        //TODO: CUANDO SE MUEVA EL MAPA
       ),
     );
   }
