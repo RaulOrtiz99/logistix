@@ -10,15 +10,13 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-
   late LocationBloc locationBloc;
 
   @override
   void initState() {
-    
     super.initState();
 
-    locationBloc= BlocProvider.of<LocationBloc>(context);
+    locationBloc = BlocProvider.of<LocationBloc>(context);
     locationBloc.startFollowingUser();
   }
 
@@ -28,13 +26,16 @@ class _MapScreenState extends State<MapScreen> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('Map'),
-      ),
-    );
+    return Scaffold(body: BlocBuilder<LocationBloc, LocationState>(
+      builder: (context, state) {
+        if (state.lastKnownLocation == null)
+          return const Center(child: Text('Espere por favor...'));
+        return Center(
+          child: Text('${state.lastKnownLocation!.latitude}, ${state.lastKnownLocation!.longitude}'),
+        );
+      },
+    ));
   }
 }

@@ -11,3 +11,7 @@ class OnNewLocationEvent extends LocationEvent{
   final LatLng newLocation; 
   const OnNewLocationEvent(this.newLocation);
 }
+
+class OnStartFollowingUser extends LocationEvent{}
+
+class OnStopFollowingUser extends LocationEvent {}
