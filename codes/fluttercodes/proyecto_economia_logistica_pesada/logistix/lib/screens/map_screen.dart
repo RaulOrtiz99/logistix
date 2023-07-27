@@ -3,8 +3,8 @@ import '../views/map_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logistix/widgets/btn_location.dart';
+import 'package:logistix/widgets/btn_follow_user.dart';
 import 'package:logistix/blocs/location/location_bloc.dart';
-
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -57,7 +57,8 @@ class _MapScreenState extends State<MapScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-        BtnCurrentLocation()
+          BtnFollowUser(),
+          BtnCurrentLocation(),
         ],
       ),
     );
