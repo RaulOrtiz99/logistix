@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logistix/widgets/btn_location.dart';
 import 'package:logistix/widgets/btn_follow_user.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 import 'package:logistix/blocs/location/location_bloc.dart';
+
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -47,6 +49,28 @@ class _MapScreenState extends State<MapScreen> {
               return SingleChildScrollView(
                 child: Stack(
                   children: [
+                    SizedBox(
+                    width: 300,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Contraseña',
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                        prefixIcon: Icon(
+                          Icons.lock_outline_rounded,
+                          color: Colors.black,
+                          size: 30,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(20)),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        filled: true,
+                        fillColor: Colors.white70,
+                      ),
+                    ),
+                  ),
                     MapViews(
                       polylines: mapState.polylines.values.toSet(),
                       initialLocation: locationState.lastKnownLocation!,
@@ -65,6 +89,7 @@ class _MapScreenState extends State<MapScreen> {
         children: [
           BtnFollowUser(),
           BtnCurrentLocation(),
+          ElevatedButton(onPressed: (){}, child: Text('Solicicar Viaje'))
         ],
       ),
     );
